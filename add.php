@@ -1,9 +1,5 @@
-<?php
+<?php include 'engine/inc/header.php';?>
 
-include 'engine/inc/header.php';
-
-?>
-<? include 'engine/inc/footer.php'; ?>
 <!-- Begin page content -->
 <main role="main" class="container">
     <h1 class="mt-5">Добавление новой организации</h1>
@@ -50,6 +46,7 @@ include 'engine/inc/header.php';
 
 </main>
 
+<? include 'engine/inc/footer.php'; ?>
 
 <script type="text/javascript">
     $('#inputState').change(function() {
