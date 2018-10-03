@@ -54,13 +54,6 @@ if (isset($_GET["orgname"]) && isset($_GET["orgtype"]) && isset($_GET["INN"]) &&
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             exit();
         }
-        /*
-        if(strlen($OrgNumber) != 10) {
-            $result = array('error' => 'Номер должен состоять из 10 символов!');
-            echo json_encode($result, JSON_UNESCAPED_UNICODE);
-            exit();
-        }
-        */
         $ru = preg_match('~[а-яё]+~iu', $OrgName);
         $en = preg_match('~[a-z]+~i', $OrgName);
 
