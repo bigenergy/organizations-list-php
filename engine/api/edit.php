@@ -64,13 +64,6 @@ if (isset($_GET["orgname"]) && isset($_GET["orgtype"]) && isset($_GET["INN"]) &&
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             exit();
         }
-        /*
-        if(strlen($OrgNumber) != 10) {
-            $result = array('error' => 'Номер должен состоять из 10 символов!');
-            echo json_encode($result, JSON_UNESCAPED_UNICODE);
-            exit();
-        }
-        */
         $ru = preg_match('~[а-яё]+~iu', $OrgName);
         $en = preg_match('~[a-z]+~i', $OrgName);
 
@@ -94,17 +87,10 @@ if (isset($_GET["orgname"]) && isset($_GET["orgtype"]) && isset($_GET["INN"]) &&
             }
         }
 
-
-
-
-        //if($num_rows == 0) {
-            // сопадений по бд нет, выполняем дальше
             if($OrgType == 'IP') {
                 // для ИП, у него нет КПП
                 if(strlen($OrgINN) == 12 && strlen($OrgKPP) == 0 ) {
                     // проверяем, введено ли 12 символов
-                    //$sql_add ="INSERT INTO `organizations` (`id`, `name`, `type`, `inn`, `kpp`, `phone`, `email`) VALUES (NULL, '$OrgName', '$OrgType', '$OrgINN', NULL, '$OrgNumber', '$OrgEmail');";
-
                     while ($row = $result_info->fetch()) {
                         if ($OrgName != $row["name"]) {
                             $sql_upd_name = "UPDATE `organizations` SET `name` = '$OrgName' WHERE `id` = '$OrgID'";
@@ -139,12 +125,10 @@ if (isset($_GET["orgname"]) && isset($_GET["orgtype"]) && isset($_GET["INN"]) &&
                 } else {
                     $result = array('error' => 'ИНН должен составлять 12 символов! КПП для ИП не заполняется!');
                 }
-
             } elseif($OrgType == 'UL') {
                 // для ЮЛ, с КПП
                 if(strlen($OrgINN) == 10 && strlen($OrgKPP) == 9) {
                     // проверяем, введено ли 10 символов
-
                     while ($row = $result_info->fetch()) {
                         if ($OrgName != $row["name"]) {
                             $sql_upd_name = "UPDATE `organizations` SET `name` = '$OrgName' WHERE `id` = '$OrgID'";
@@ -190,16 +174,7 @@ if (isset($_GET["orgname"]) && isset($_GET["orgtype"]) && isset($_GET["INN"]) &&
                     $result = array('error' => 'ИНН должен составлять 10 символов, а КПП должен составлять 9!');
                     echo json_encode($result, JSON_UNESCAPED_UNICODE);
                 }
-
             }
-
-        //} else {
-        //    // есть совпадения по базе
-        //    $result = array('already' => 'Организация с таким ИНН или КПП уже зарегистрирована в базе');
-        //    echo json_encode($result, JSON_UNESCAPED_UNICODE);
-        //}
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
     }
-
-    //echo json_encode($result, JSON_UNESCAPED_UNICODE);
 }
