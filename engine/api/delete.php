@@ -9,4 +9,6 @@ if (isset($_GET["id"])) {
 
     echo $remove;
 
+} else {
+    echo 'Переданы не все параметры запроса!';
 }

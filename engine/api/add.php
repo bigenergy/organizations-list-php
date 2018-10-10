@@ -15,5 +15,5 @@ if (isset($_GET["orgname"]) && isset($_GET["orgtype"]) && isset($_GET["INN"]) &&
     echo $add;
 
 } else {
-    echo 'Переданы не все параметры запроса';
+    echo 'Переданы не все параметры запроса!';
 }
