@@ -2,10 +2,6 @@
 
 include_once '../classes/API.class.php';
 
-// показ ошибок
-//ini_set('display_errors',1);
-//error_reporting(E_ALL);
-
 $_GET["email"] = NULL;
 
 if (isset($_GET["orgname"]) && isset($_GET["orgtype"]) && isset($_GET["INN"]) && isset($_GET["number"])) {
