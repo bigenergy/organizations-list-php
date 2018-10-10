@@ -5,6 +5,7 @@
 <ul>
   <li>Bootstrap 4</li>
   <li>MySQL PDO</li>
+  <li>PHP ООП</li>
   <li>JavaScript</li>
   <li>PHP 7.2</li>
   <li>Обработка всех форм на AJAX</li>
