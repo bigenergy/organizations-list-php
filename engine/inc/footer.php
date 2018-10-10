@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container">
-        <span class="text-muted">Списки огранизаций | Тестовое задание | Автор: Андрей Ужегов</span>
+        <span class="text-muted">Списки огранизаций | Тестовое задание | Автор: Андрей Ужегов | <a href="https://github.com/bigenergy"><i class="fab fa-github"></i> GitHub</a></span>
     </div>
 </footer>
 
