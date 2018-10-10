@@ -7,9 +7,6 @@
  */
 include_once 'MyPDO.class.php';
 
-error_reporting(E_ALL);
-ini_set('display_errors',1);
-
 class API
 {
     public $db;
@@ -30,7 +27,7 @@ class API
             $stmt->execute();
             $count = $stmt->rowCount();
             if ($count > 0) {
-                $result_json = array('success' => 'Организация с ID ' . $id . ' удалена успешно.');
+                $result_json = array('good' => 'Организация с ID ' . $id . ' удалена успешно.');
             } else {
                 $result_json = array('error' => 'Ошибка выполнения запроса, организация с указанным ID не существует или что-то пошло не так!');
             }
@@ -221,12 +218,19 @@ class API
 
     }
 
+    // функция вывода списка всех организаций или по определенному ID
+    public function list_org($id=null) {
+
+        if($id != NULL) {
+            $array = $this->db->run("SELECT * FROM organizations WHERE id = '$id'")->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            $array = $this->db->run("SELECT * FROM organizations")->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+
+        return json_encode($array,JSON_UNESCAPED_UNICODE);
+
+    }
+
 
 }
-
-//$remove_class = new API();
-//$remove = $remove_class->add_org("test", "IP", "111111111111", NULL, "777", "test@test.ru");
-
-//$remove = $remove_class->check_org("IP", "123", "321");
-
-//echo $remove;
