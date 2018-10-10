@@ -32,7 +32,7 @@ class API
                 $result_json = array('error' => 'Ошибка выполнения запроса, организация с указанным ID не существует или что-то пошло не так!');
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
 
         return json_encode($result_json, JSON_UNESCAPED_UNICODE);
@@ -60,8 +60,7 @@ class API
             }
         }
         catch(PDOException $e){
-            echo $e->getMessage();
-            return false;
+            return $e->getMessage();
         }
 
     }
@@ -140,8 +139,7 @@ class API
                 return json_encode($result_json, JSON_UNESCAPED_UNICODE);
             }
         } catch(PDOException $e) {
-            echo $e->getMessage();
-            return false;
+            return $e->getMessage();
         }
 
     }
@@ -212,8 +210,7 @@ class API
                 return json_encode($result_json, JSON_UNESCAPED_UNICODE);
             }
         } catch(PDOException $e) {
-            echo $e->getMessage();
-            return false;
+            return $e->getMessage();
         }
 
     }
